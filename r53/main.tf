@@ -16,4 +16,4 @@ resource "aws_route53_record" "r53" {
 
 variable "component" {}
 variable "private_ip" {}
-variable "public_ip" {}
+#variable "public_ip" {}
