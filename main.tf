@@ -15,5 +15,5 @@ module "r53" {
   for_each   = var.instances
   private_ip = module.ec2[each.value["name"]].private_ip
   component  = each.value["name"]
-  #public_ip  = module.ec2["frontend"].public_ip
+  public_ip  = module.ec2["frontend"].public_ip
 }
