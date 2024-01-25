@@ -17,3 +17,7 @@ resource "aws_instance" "instances" {
 variable "instance_type" {}
 variable "component" {}
 variable "sg_id" {}
+
+output "private_ip" {
+  value = aws_instance.instances.private_ip
+}
