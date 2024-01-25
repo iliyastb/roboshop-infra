@@ -17,3 +17,7 @@ module "r53" {
   component  = each.value["name"]
   #public_ip  = module.ec2[each.value["frontend"]].public_ip
 }
+
+output "ec2" {
+  value = module.ec2
+}
