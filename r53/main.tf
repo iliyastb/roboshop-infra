@@ -10,7 +10,7 @@ resource "aws_route53_record" "pr53" {
   name    = "devtb.online"
   type    = "A"
   ttl     = 30
-  records = 0.0.0.0 #[var.public_ip]
+  records = [0.0.0.0]
   zone_id = "Z0519871SX8ZUH6ORUV5"
 }
 
