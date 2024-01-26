@@ -10,3 +10,7 @@ variable "instances" {
     }
   }
 }
+
+variable "public_ip" {
+  default = "18.207.244.14"
+}
