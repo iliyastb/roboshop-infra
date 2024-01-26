@@ -10,7 +10,7 @@ resource "aws_route53_record" "pr53" {
   name    = "devtb.online"
   type    = "A"
   ttl     = 30
-  records = [0.0.0.0]
+  records = [18.207.244.14]
   zone_id = "Z0519871SX8ZUH6ORUV5"
 }
 
