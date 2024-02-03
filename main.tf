@@ -17,7 +17,7 @@ module "r53" {
   component  = each.value["name"]
 }
 
-module "r53p" {
-  source = "./r53p"
-  public_ip = module.ec2["frontend"].public_ip
-}
+#module "r53p" {
+#  source = "./r53p"
+#  public_ip = module.ec2["frontend"].public_ip
+#}
