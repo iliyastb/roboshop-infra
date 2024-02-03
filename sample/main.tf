@@ -1,4 +1,4 @@
-resource "aws_spot_instance_request" "instances" {
+resource "aws_instance" "instances" {
   ami                    = "ami-001be52dbdb73d993"
   instance_type          = "t3.micro"
   vpc_security_group_ids = ["sg-0f1959ab92bc12167"]
