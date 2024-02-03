@@ -24,8 +24,7 @@ resource "aws_spot_instance_request" "instances" {
     }
 
     inline = [
-      "ansible-pull -i localhost -U https://github.com/iliyastb/roboshop-ansible.git roboshop.yml -e role_name=${var.component}",
-      "ls"
+      "ansible-pull -i localhost -U https://github.com/iliyastb/roboshop-ansible.git roboshop.yml -e role_name=${var.component}"
     ]
   }
 }
