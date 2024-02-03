@@ -6,7 +6,7 @@ data "aws_ami" "ami" {
 
 #973714476881
 
-resource "aws_spot_instance_request" "instances" {
+resource "aws_instance" "instances" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [var.sg_id]
@@ -24,7 +24,7 @@ resource "aws_spot_instance_request" "instances" {
     }
 
     inline = [
-      "ansible-pull -i localhost -U https://github.com/iliyastb/roboshop-ansible.git roboshop.yml -e role_name=${var.component}"
+      "ansible-pull -i localhost, -U https://github.com/iliyastb/roboshop-ansible.git roboshop.yml -e role_name=${var.component}"
     ]
   }
 }
@@ -34,5 +34,9 @@ variable "component" {}
 variable "sg_id" {}
 
 output "private_ip" {
-  value = aws_spot_instance_request.instances.private_ip
+  value = aws_instance.instances.private_ip
+}
+
+output "public_ip" {
+  value = aws_instance.instances.public_ip
 }
