@@ -19,7 +19,7 @@ resource "aws_instance" "instances" {
 
     connection {
       host = self.public_ip
-      user = "centos"
+      user = "root"
       password = "DevOps321"
     }
 
