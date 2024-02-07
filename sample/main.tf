@@ -21,3 +21,5 @@ resource "aws_spot_instance_request" "instances" {
     ]
   }
 }
+
+#ami-072aa986009d7d8af
