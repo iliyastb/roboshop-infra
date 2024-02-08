@@ -1,9 +1,12 @@
 data "aws_instances" "ip" {
-  instance_state_names = ["running", "stopped"]
+  filter {
+    name   = "Name"
+    values = ["WS"]
+  }
 }
 
 output "ip" {
-  value = data.aws_instances.ip.public_ips
+  value = data.aws_instances.ip
 }
 #resource "aws_spot_instance_request" "instances" {
 #  ami                    = "ami-001be52dbdb73d993"
