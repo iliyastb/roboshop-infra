@@ -28,3 +28,7 @@ module "pro" {
   component = each.value["name"]
   public_ip = module.pro["frontend"].ip
 }
+
+output "pro" {
+  value = module.pro
+}
