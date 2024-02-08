@@ -4,7 +4,6 @@ data "aws_instances" "ip" {
     values = ["WS"]
   }
 }
-
 output "ip" {
   value = data.aws_instances.ip.public_ips
 }
