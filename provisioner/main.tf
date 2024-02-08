@@ -25,3 +25,4 @@ resource "null_resource" "provisioner" {
 }
 
 variable "public_ip" {}
+variable "component" {}
