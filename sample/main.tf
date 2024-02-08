@@ -1,12 +1,9 @@
 data "aws_instances" "ip" {
-  instance_tags = {
-    Name = "WS"
-  }
   instance_state_names = ["running", "stopped"]
 }
 
 output "ip" {
-  value = data.aws_instances.ip.instance_tags
+  value = data.aws_instances.ip.instance_state_names
 }
 #resource "aws_spot_instance_request" "instances" {
 #  ami                    = "ami-001be52dbdb73d993"
