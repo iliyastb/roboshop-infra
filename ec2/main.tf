@@ -6,19 +6,28 @@ data "aws_ami" "ami" {
 
 #973714476881
 
-resource "aws_instance" "instances" {
+resource "aws_spot_instance_request" "instances" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [var.sg_id]
+  wait_for_fulfillment = true
 
   tags = {
     Name = var.component
   }
+}
 
+resource "aws_ec2_tag" "tags" {
+  key         = Name
+  resource_id = aws_spot_instance_request.instances.id
+  value       = var.component
+}
+
+resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
 
     connection {
-      host = self.public_ip
+      host = aws_spot_instance_request.instances.public_ip
       user = "root"
       password = "DevOps321"
     }
