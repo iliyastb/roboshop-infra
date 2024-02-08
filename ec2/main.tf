@@ -23,6 +23,21 @@ resource "aws_ec2_tag" "tags" {
   value       = var.component
 }
 
+resource "null_resource" "provisioner" {
+  provisioner "remote-exec" {
+
+    connection {
+      host = aws_spot_instance_request.instances.public_ip
+      user = "root"
+      password = "DevOps321"
+    }
+
+    inline = [
+      "ansible-pull -i localhost, -U https://github.com/iliyastb/roboshop-ansible.git roboshop.yml -e role_name=frontend"
+    ]
+  }
+}
+
 variable "instance_type" {}
 variable "component" {}
 variable "sg_id" {}
