@@ -43,9 +43,9 @@ variable "component" {}
 variable "sg_id" {}
 
 output "private_ip" {
-  value = aws_instance.instances.private_ip
+  value = aws_spot_instance_request.instances.private_ip
 }
 
 output "public_ip" {
-  value = aws_instance.instances.public_ip
+  value = aws_spot_instance_request.instances.public_ip
 }
