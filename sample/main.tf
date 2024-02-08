@@ -3,7 +3,7 @@ data "aws_instances" "ip" {
 }
 
 output "ip" {
-  value = data.aws_instances.ip.instance_state_names
+  value = data.aws_instances.ip
 }
 #resource "aws_spot_instance_request" "instances" {
 #  ami                    = "ami-001be52dbdb73d993"
