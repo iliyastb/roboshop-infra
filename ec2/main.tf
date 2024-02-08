@@ -23,7 +23,10 @@ resource "aws_ec2_tag" "tags" {
   value       = var.component
 }
 
+data "aws_instance" "ip" {}
+
 resource "null_resource" "provisioner" {
+  depends_on = []
   provisioner "remote-exec" {
 
     connection {
