@@ -21,3 +21,10 @@
 #  source = "./r53p"
 #  public_ip = module.ec2["frontend"].public_ip
 #}
+
+module "pro" {
+  source = "./provisioner"
+  for_each = var.instances
+  component = each.value["name"]
+  public_ip = module.pro.ip
+}
