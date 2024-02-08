@@ -2,9 +2,12 @@ data "aws_instances" "ip" {
   instance_tags = {
     Key = "Name"
   }
-  instance_state_names = ["running"]
+  #instance_state_names = ["running"]
 }
 
+output "ip" {
+  value = data.aws_instances.ip
+}
 #resource "aws_spot_instance_request" "instances" {
 #  ami                    = "ami-001be52dbdb73d993"
 #  instance_type          = "t3.micro"
