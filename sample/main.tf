@@ -2,6 +2,7 @@ data "aws_instances" "ip" {
   instance_tags = {
     Key = "Name"
   }
+  instance_state_names = ["running"]
 }
 
 #resource "aws_spot_instance_request" "instances" {
