@@ -1,6 +1,6 @@
 data "aws_instances" "ip" {
   filter {
-    name   = "Name"
+    name   = "tag:Name"
     values = ["WS"]
   }
 }
