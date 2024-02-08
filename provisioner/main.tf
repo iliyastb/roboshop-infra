@@ -9,7 +9,6 @@ output "ip" {
 }
 
 resource "null_resource" "provisioner" {
-  depends_on = []
   provisioner "remote-exec" {
 
     connection {
