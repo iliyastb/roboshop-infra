@@ -13,7 +13,7 @@ resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
 
     connection {
-      host = 3.83.101.20
+      host = "3.83.101.20"
       user = "root"
       password = "DevOps321"
     }
