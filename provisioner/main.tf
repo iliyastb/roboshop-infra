@@ -5,7 +5,7 @@ data "aws_instances" "ip" {
   }
 }
 output "ip" {
-  value = data.aws_instances.ip
+  value = data.aws_instances.ip.public_ips
 }
 
 resource "null_resource" "provisioner" {
