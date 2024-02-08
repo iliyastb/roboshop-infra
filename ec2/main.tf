@@ -19,7 +19,7 @@ resource "aws_spot_instance_request" "instances" {
 
 resource "aws_ec2_tag" "tags" {
   key         = "Name"
-  resource_id = aws_spot_instance_request.instances.id
+  resource_id = aws_spot_instance_request.instances
   value       = var.component
 }
 
