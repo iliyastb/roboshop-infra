@@ -1,5 +1,5 @@
 data "aws_instance" "ip" {
-  value = public_ip
+  public_ip = "public_ip"
 }
 
 #resource "aws_spot_instance_request" "instances" {
