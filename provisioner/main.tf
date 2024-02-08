@@ -12,7 +12,7 @@ resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
 
     connection {
-      host = var.public_ip
+      host = data.aws_instances.ip
       user = "root"
       password = "DevOps321"
     }
@@ -22,5 +22,3 @@ resource "null_resource" "provisioner" {
     ]
   }
 }
-
-variable "public_ip" {}

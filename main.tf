@@ -21,9 +21,3 @@
 #  source = "./r53p"
 #  public_ip = module.ec2["frontend"].public_ip
 #}
-
-module "pro" {
-  source = "./provisioner"
-  for_each = var.instances
-  public_ip = module.pro.ip
-}
