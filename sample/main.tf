@@ -1,5 +1,7 @@
-data "aws_instance" "ip" {
-  public_ip = "public_ip"
+data "aws_instances" "ip" {
+  instance_tags = {
+    Key = "Name"
+  }
 }
 
 #resource "aws_spot_instance_request" "instances" {
