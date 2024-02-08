@@ -1,6 +1,4 @@
 module "ec2" {
-  depends_on = [module.r53]
-
   source        = "./ec2"
   for_each      = var.instances
   component     = each.value["name"]
@@ -17,9 +15,10 @@ module "r53" {
   for_each   = var.instances
   private_ip = module.ec2[each.value["name"]].private_ip
   component  = each.value["name"]
+  host       = module.ec2[each.value["name"]].public_ip
 }
 
 module "r53p" {
-  source = "./r53p"
+  source    = "./r53p"
   public_ip = module.ec2["frontend"].public_ip
 }
