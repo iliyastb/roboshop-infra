@@ -2,7 +2,7 @@ data "aws_instances" "ip" {
   instance_tags = {
     Key = "Name"
   }
-  #instance_state_names = ["running"]
+  instance_state_names = ["running"]
 }
 
 output "ip" {
