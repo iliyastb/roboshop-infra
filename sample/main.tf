@@ -1,6 +1,6 @@
 data "aws_instances" "ip" {
   instance_tags = {
-    Key = "Name"
+    Role = "Name"
   }
   instance_state_names = ["running"]
 }
