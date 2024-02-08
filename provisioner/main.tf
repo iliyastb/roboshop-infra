@@ -12,16 +12,13 @@ resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
 
     connection {
-      host = var.public_ip
+      host = data.aws_instances.ip.public_ips
       user = "root"
       password = "DevOps321"
     }
 
     inline = [
-      "ansible-pull -i localhost, -U https://github.com/iliyastb/roboshop-ansible.git roboshop.yml -e role_name=${var.component}"
+      "ansible-pull -i localhost, -U https://github.com/iliyastb/roboshop-ansible.git roboshop.yml -e role_name=frontend"
     ]
   }
 }
-
-variable "component" {}
-variable "public_ip" {}

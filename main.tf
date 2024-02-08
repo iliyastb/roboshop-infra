@@ -22,13 +22,13 @@
 #  public_ip = module.ec2["frontend"].public_ip
 #}
 
-module "pro" {
-  source = "./provisioner"
-  for_each = var.instances
-  component = each.value["name"]
-  public_ip = module.pro[each.value["frontend"]].ip
-}
-
-output "pro" {
-  value = module.pro
-}
+#module "pro" {
+#  source = "./provisioner"
+#  for_each = var.instances
+#  component = each.value["name"]
+#  public_ip = module.pro[each.value["frontend"]].ip
+#}
+#
+#output "pro" {
+#  value = module.pro
+#}
