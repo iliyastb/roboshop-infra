@@ -1,8 +1,8 @@
 data "aws_instances" "ip" {
-  instance_tags = {
-    Role = "Name"
+  filter {
+    name   = "Name"
+    values = [Ws]
   }
-  instance_state_names = ["running"]
 }
 
 output "ip" {
