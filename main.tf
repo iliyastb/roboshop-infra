@@ -26,5 +26,5 @@ module "pro" {
   source = "./provisioner"
   for_each = var.instances
   component = each.value["name"]
-  public_ip = module.pro["ip"].ip
+  public_ip = module.pro["name"].ip
 }
