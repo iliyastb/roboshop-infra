@@ -1,7 +1,7 @@
 data "aws_instances" "ip" {
   filter {
     name   = "Name"
-    values = [public_ips]
+    values = public_ips
   }
 }
 
