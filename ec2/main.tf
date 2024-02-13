@@ -1,27 +1,27 @@
-resource "aws_security_group" "robo_sg" {
-  name        = "robo_sg"
-  description = "Allow TLS inbound traffic"
-
-  ingress {
-    description      = "TLS from VPC"
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  tags = {
-    Name = "robo_sg"
-  }
-}
+#resource "aws_security_group" "robo_sg" {
+#  name        = "robo_sg"
+#  description = "Allow TLS inbound traffic"
+#
+#  ingress {
+#    description      = "TLS from VPC"
+#    from_port        = 0
+#    to_port          = 0
+#    protocol         = "-1"
+#    cidr_blocks      = ["0.0.0.0/0"]
+#  }
+#
+#  egress {
+#    from_port        = 0
+#    to_port          = 0
+#    protocol         = "-1"
+#    cidr_blocks      = ["0.0.0.0/0"]
+#    ipv6_cidr_blocks = ["::/0"]
+#  }
+#
+#  tags = {
+#    Name = "robo_sg"
+#  }
+#}
 
 data "aws_ami" "ami" {
   most_recent = true
@@ -32,7 +32,7 @@ data "aws_ami" "ami" {
 resource "aws_instance" "instances" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.robo_sg.id]
+  vpc_security_group_ids = ["sg-0f1959ab92bc12167"]
 
   tags = {
     Name = var.component
