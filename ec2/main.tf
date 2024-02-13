@@ -40,7 +40,7 @@ resource "aws_instance" "instances" {
 }
 
 resource "aws_route53_record" "r53" {
-  name    = "${var.component}.devtb.online"
+  name    = "${var.component}-${var.env}.devtb.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.instances.private_ip]
