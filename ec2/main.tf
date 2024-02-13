@@ -7,15 +7,15 @@ data "aws_ami" "ami" {
 resource "aws_instance" "instances" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.allow_tls.id]
+  vpc_security_group_ids = [aws_security_group.allow_t.id]
 
   tags = {
     Name = var.component
   }
 }
 
-resource "aws_security_group" "allow_tls" {
-  name        = "allow_tls"
+resource "aws_security_group" "allow_t" {
+  name        = "allow_t"
   description = "Allow TLS inbound traffic"
 
   ingress {
@@ -35,7 +35,7 @@ resource "aws_security_group" "allow_tls" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "allow_t"
   }
 }
 
