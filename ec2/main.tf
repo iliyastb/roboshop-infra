@@ -1,21 +1,5 @@
-data "aws_ami" "ami" {
-  most_recent = true
-  name_regex  = "centos8-ansible"
-  owners      = ["860050401100"]
-}
-
-resource "aws_instance" "instances" {
-  ami                    = data.aws_ami.ami.id
-  instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.allow_t.id]
-
-  tags = {
-    Name = var.component
-  }
-}
-
-resource "aws_security_group" "allow_t" {
-  name        = "allow_t"
+resource "aws_security_group" "robo_sg" {
+  name        = "robo_sg"
   description = "Allow TLS inbound traffic"
 
   ingress {
@@ -35,7 +19,23 @@ resource "aws_security_group" "allow_t" {
   }
 
   tags = {
-    Name = "allow_t"
+    Name = "robo_sg"
+  }
+}
+
+data "aws_ami" "ami" {
+  most_recent = true
+  name_regex  = "centos8-ansible"
+  owners      = ["860050401100"]
+}
+
+resource "aws_instance" "instances" {
+  ami                    = data.aws_ami.ami.id
+  instance_type          = var.instance_type
+  vpc_security_group_ids = [aws_security_group.robo_sg.id]
+
+  tags = {
+    Name = var.component
   }
 }
 
