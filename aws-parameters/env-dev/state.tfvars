@@ -1,3 +1,3 @@
 bucket = "devtb-state"
-key = "dev/para/terraform.tfstate"
+key = "dev/parameters/terraform.tfstate"
 region = "us-east-1"
