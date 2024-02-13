@@ -47,13 +47,13 @@ resource "aws_route53_record" "r53" {
   zone_id = "Z0519871SX8ZUH6ORUV5"
 }
 
-#resource "aws_route53_record" "fr53" {
-#  name    = "devtb.online"
-#  type    = "A"
-#  ttl     = 30
-#  records = [aws_instance.instances["frontend"].public_ip]
-#  zone_id = "Z0519871SX8ZUH6ORUV5"
-#}
+resource "aws_route53_record" "fr53" {
+  name    = "devtb.online"
+  type    = "A"
+  ttl     = 30
+  records = [var.public_ip]
+  zone_id = "Z0519871SX8ZUH6ORUV5"
+}
 
 resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
@@ -74,4 +74,9 @@ variable "instance_type" {}
 variable "component" {}
 variable "env" {
   default = "dev"
+}
+variable "public_ip" {}
+
+output "public_ip" {
+  value = aws_instance.instances.public_ip
 }
