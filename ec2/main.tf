@@ -54,14 +54,6 @@ data "aws_instance" "ip" {
   }
 }
 
-resource "aws_route53_record" "fr53" {
-  name    = "devtb.online"
-  type    = "A"
-  ttl     = 30
-  records = [data.aws_instance.ip.public_ip]
-  zone_id = "Z0519871SX8ZUH6ORUV5"
-}
-
 resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
 
