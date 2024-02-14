@@ -23,16 +23,11 @@ resource "aws_security_group" "sg" {
   }
 }
 
-data "aws_ami" "ami" {
-  most_recent = true
-  name_regex  = "centos8-ansible"
-  owners      = ["860050401100"]
-}
-
 resource "aws_instance" "instances" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg.id]
+  iam_instance_profile = "${var.env}-${var.component}-role"
 
   tags = {
     Name = var.component
@@ -46,13 +41,6 @@ resource "aws_route53_record" "r53" {
   records = [aws_instance.instances.private_ip]
   zone_id = "Z0519871SX8ZUH6ORUV5"
 }
-
-#data "aws_instance" "ip" {
-#  filter {
-#    name   = "tag:Name"
-#    values = ["frontend"]
-#  }
-#}
 
 resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
@@ -69,8 +57,58 @@ resource "null_resource" "provisioner" {
   }
 }
 
-variable "instance_type" {}
-variable "component" {}
-variable "env" {
-  default = "dev"
+resource "aws_iam_policy" "ssm-policy" {
+  name        = "${var.env}-${var.component}-ssm"
+  path        = "/"
+  description = "${var.env}-${var.component}-ssm"
+
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "VisualEditor0",
+        "Effect": "Allow",
+        "Action": [
+          "ssm:GetParameterHistory",
+          "ssm:GetParametersByPath",
+          "ssm:GetParameters",
+          "ssm:GetParameter"
+        ],
+        "Resource": "arn:aws:ssm:us-east-1:860050401100:parameter/${var.env}-${var.component}*"
+      },
+      {
+        "Sid": "VisualEditor1",
+        "Effect": "Allow",
+        "Action": "ssm:DescribeParameters",
+        "Resource": "*"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role" "role" {
+  name = "${var.env}-${var.component}-role"
+
+  assume_role_policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "ec2.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_instance_profile" "profile" {
+  name = "${var.env}-${var.component}-role"
+  role = aws_iam_role.role.name
+}
+
+resource "aws_iam_role_policy_attachment" "policy-attach" {
+  role       = aws_iam_role.role.name
+  policy_arn = aws_iam_policy.ssm-policy.arn
 }

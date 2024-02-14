@@ -1,3 +1,5 @@
+env = "dev"
+
 instances = {
   frontend = {
     name = "frontend"
