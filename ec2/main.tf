@@ -47,12 +47,12 @@ resource "aws_route53_record" "r53" {
   zone_id = "Z0519871SX8ZUH6ORUV5"
 }
 
-data "aws_instance" "ip" {
-  filter {
-    name   = "tag:Name"
-    values = ["frontend"]
-  }
-}
+#data "aws_instance" "ip" {
+#  filter {
+#    name   = "tag:Name"
+#    values = ["frontend"]
+#  }
+#}
 
 resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
