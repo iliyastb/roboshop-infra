@@ -31,6 +31,7 @@ resource "aws_instance" "instances" {
 
   tags = {
     Name = var.component
+    Monitor = var.monitor ? "yes" : "no"
   }
 }
 
