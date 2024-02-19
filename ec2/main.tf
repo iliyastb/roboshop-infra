@@ -44,7 +44,7 @@ resource "aws_route53_record" "r53" {
 }
 
 resource "null_resource" "provisioner" {
-  depends_on = [aws_route53_record.r53.records]
+  depends_on = [aws_route53_record.r53]
   provisioner "remote-exec" {
 
     connection {
