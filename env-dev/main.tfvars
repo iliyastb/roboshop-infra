@@ -1,55 +1,46 @@
 env = "dev"
 
-instances = {
-  frontend = {
-    name = "frontend"
-    type = "t3.small"
-    monitor = true
-  }
-  catalogue = {
-    name = "catalogue"
-    type = "t3.small"
-    monitor = true
-  }
-  user = {
-    name = "user"
-    type = "t3.small"
-    monitor = true
-  }
-  cart = {
-    name = "cart"
-    type = "t3.small"
-    monitor = true
-  }
-  mongodb = {
-    name = "mongodb"
-    type = "t3.small"
-  }
-  redis = {
-    name = "redis"
-    type = "t3.small"
-  }
-  shipping = {
-    name = "shipping"
-    type = "t3.small"
-    monitor = true
-  }
-  payment = {
-    name = "payment"
-    type = "t3.small"
-    monitor = true
-  }
-  mysql = {
-    name = "mysql"
-    type = "t3.small"
-  }
-  rabbitmq = {
-    name = "rabbitmq"
-    type = "t3.small"
-  }
-  dispatch = {
-    name = "dispatch"
-    type = "t3.small"
-    monitor = true
+vpc = {
+  main = {
+    cidr  = "10.0.0.0/16"
+
+    public_subnets = {
+      name = "public-az1"
+      cidr_block = "10.0.0.0/24"
+    }
+
+    public_subnets = {
+      name = "public-az2"
+      cidr_block = "10.0.1.0/24"
+    }
+
+    private_subnets = {
+      web ={
+        name = "private"
+        cidr_block = "10.0.2.0/24"
+      }
+      web ={
+        name = "private"
+        cidr_block = "10.0.3.0/24"
+      }
+
+      app ={
+        name = "private"
+        cidr_block = "10.0.4.0/24"
+      }
+      app ={
+        name = "private"
+        cidr_block = "10.0.5.0/24"
+      }
+
+      db ={
+        name = "private"
+        cidr_block = "10.0.6.0/24"
+      }
+      db ={
+        name = "private"
+        cidr_block = "10.0.7.0/24"
+      }
+    }
   }
 }
