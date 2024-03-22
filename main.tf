@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "github.com/iliyastb/tf-module-vpc"
+  source = "git::https://github.com/iliyastb/tf-module-vpc.git"
   env = var.env
   tags = var.tags
 
