@@ -1,9 +1,12 @@
 module "vpc" {
   source = "github.com/iliyastb/tf-module-vpc"
   env = var.env
+  tags = var.tags
 
   for_each = var.vpc
-  cidr = each.value["cidr"]
+  vpc_cidr = each.value["vpc_cidr"]
+  public_subnets = each.value["public_subnets"]
+  private_subnets = each.value["private_subnets"]
 }
 
 
