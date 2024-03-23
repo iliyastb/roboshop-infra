@@ -12,8 +12,12 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 }
 
+module "vpc" {
+  source = "git::https://github.com/iliyastb/tf-module-docdb.git"
+  env = var.env
+  tags = var.tags
 
-#"github.com/hashicorp/example"
-#"git@github.com:hashicorp/example.git"
-#"git::https://example.com/vpc.git"
-#"git::ssh://username@example.com/storage.git"
+  for_each = var.docdb
+  engine = each.value["engine"]
+  engine_version = each.value["engine_version"]
+}
