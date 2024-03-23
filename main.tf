@@ -23,4 +23,9 @@ module "vpc" {
   backup_retention_period = each.value["backup_retention_period"]
   preferred_backup_window = each.value["preferred_backup_window"]
   skip_final_snapshot = each.value["skip_final_snapshot"]
+  subnet_ids = module.vpc[each.value["subnet_ids"]]
+}
+
+output "main" {
+  value = local.db_subnets_ids
 }
