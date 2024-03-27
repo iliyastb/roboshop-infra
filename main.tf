@@ -70,6 +70,10 @@ module "vpc" {
 #  subnet_ids = local.db_subnets_ids
 #}
 #
-##output "main" {
-##  value = local.db_subnets_ids
-##}
+#output "main" {
+#  value = local.db_subnets_ids
+#}
+
+output "main" {
+  value = module.vpc
+}
