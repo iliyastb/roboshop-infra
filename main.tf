@@ -45,20 +45,20 @@ module "rds" {
   subnet_ids = local.db_subnets_ids
 }
 
-#module "elasticache" {
-#  source = "git::https://github.com/iliyastb/tf-module-elasticache.git"
-#  env = var.env
-#  tags = var.tags
-#
-#  for_each = var.elasticache
-#  engine = each.value["engine"]
-#  engine_version = each.value["engine_version"]
-#  num_cache_nodes = each.value["num_cache_nodes"]
-#  node_type = each.value["node_type"]
-#
-#  subnet_ids = local.db_subnets_ids
-#}
-#
+module "elasticache" {
+  source = "git::https://github.com/iliyastb/tf-module-elasticache.git"
+  env = var.env
+  tags = var.tags
+
+  for_each = var.elasticache
+  engine = each.value["engine"]
+  engine_version = each.value["engine_version"]
+  num_cache_nodes = each.value["num_cache_nodes"]
+  node_type = each.value["node_type"]
+
+  subnet_ids = local.db_subnets_ids
+}
+
 #module "rabbitmq" {
 #  source = "git::https://github.com/iliyastb/tf-module-rabbitmq.git"
 #  env = var.env
