@@ -59,17 +59,17 @@ module "elasticache" {
   subnet_ids = local.db_subnets_ids
 }
 
-#module "rabbitmq" {
-#  source = "git::https://github.com/iliyastb/tf-module-rabbitmq.git"
-#  env = var.env
-#  tags = var.tags
-#
-#  for_each = var.rabbitmq
-#  intance_type = each.value["intance_type"]
-#
-#  subnet_ids = local.db_subnets_ids
-#}
-#
+module "rabbitmq" {
+  source = "git::https://github.com/iliyastb/tf-module-rabbitmq.git"
+  env = var.env
+  tags = var.tags
+
+  for_each = var.rabbitmq
+  intance_type = each.value["intance_type"]
+
+  subnet_ids = local.db_subnets_ids
+}
+
 #output "main" {
 #  value = local.db_subnets_ids
 #}
