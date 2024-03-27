@@ -65,7 +65,7 @@ module "rabbitmq" {
   tags = var.tags
 
   for_each = var.rabbitmq
-  intance_type = each.value["intance_type"]
+  instance_type = each.value["instance_type"]
 
   subnet_ids = local.db_subnets_ids
 }
