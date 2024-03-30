@@ -97,6 +97,8 @@ module "app" {
   desired_capacity = each.value["desired_capacity"]
   max_size = each.value["max_size"]
   min_size = each.value["min_size"]
+  port = each.value["port"]
+  allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
 
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
 }
