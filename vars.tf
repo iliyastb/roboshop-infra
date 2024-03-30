@@ -11,3 +11,4 @@ variable "apps" {}
 
 variable "default_vpc_id" {}
 variable "default_rt" {}
+variable "bastion_cidr" {}
