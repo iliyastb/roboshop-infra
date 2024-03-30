@@ -6,6 +6,7 @@ variable "docdb" {}
 variable "rds" {}
 variable "elasticache" {}
 variable "rabbitmq" {}
+variable "alb" {}
 
 variable "default_vpc_id" {}
 variable "default_rt" {}
