@@ -83,6 +83,16 @@ module "alb" {
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
 }
 
+module "app" {
+  source = "git::https://github.com/iliyastb/tf-module-app.git"
+  env = var.env
+  tags = var.tags
+
+  for_each = var.apps
+  component = each.value["component"]
+  instance_type = each.value["instance_type"]
+}
+
 #output "main" {
 #  value = local.db_subnets_ids
 #}
