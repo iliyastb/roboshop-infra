@@ -102,7 +102,7 @@ alb = {
     subnet_name = "public"
     name = "public"
     internal = false
-    type = "application"
+    load_balancer_type = "application"
   }
 
   Private = {
