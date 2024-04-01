@@ -103,10 +103,6 @@ module "app" {
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
 }
 
-#output "main" {
-#  value = local.db_subnets_ids
-#}
-#
-#output "main" {
-#  value = module.vpc
-#}
+output "main" {
+  value = module.vpc
+}
