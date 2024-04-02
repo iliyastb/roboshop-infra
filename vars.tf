@@ -8,6 +8,7 @@ variable "elasticache" {}
 variable "rabbitmq" {}
 variable "alb" {}
 variable "apps" {}
+variable "dns_domain" {}
 
 variable "default_vpc_id" {}
 variable "default_rt" {}
