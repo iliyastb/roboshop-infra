@@ -102,12 +102,11 @@ module "app" {
   max_size = each.value["max_size"]
   min_size = each.value["min_size"]
   port = each.value["port"]
+  listener_priority = each.value["listener_priority"]
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null), "dns_name", null), "dns_name", null)
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
   listener_rule = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
-
-  listener_priority = each.value["listener_priority"]
 }
 
 output "main" {
