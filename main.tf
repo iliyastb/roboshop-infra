@@ -3,9 +3,8 @@ module "vpc" {
   env    = var.env
   tags   = var.tags
 
-  default_vpc_id = var.default_vpc_id
-  default_rt     = var.default_rt
-
+  default_vpc_id  = var.default_vpc_id
+  default_rt      = var.default_rt
   for_each        = var.vpc
   vpc_cidr        = each.value["vpc_cidr"]
   public_subnets  = each.value["public_subnets"]
@@ -27,9 +26,8 @@ module "docdb" {
   skip_final_snapshot     = each.value["skip_final_snapshot"]
   instance_class          = each.value["instance_class"]
   no_of_instances         = each.value["no_of_instances"]
-
-  subnet_ids    = local.db_subnets_ids
-  allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
+  subnet_ids              = local.db_subnets_ids
+  allow_subnets           = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 }
 
 #module "rds" {
@@ -44,7 +42,6 @@ module "docdb" {
 #  preferred_backup_window = each.value["preferred_backup_window"]
 #  instance_class = each.value["instance_class"]
 #  no_of_instances = each.value["no_of_instances"]
-#
 #  subnet_ids = local.db_subnets_ids
 #}
 
@@ -58,8 +55,7 @@ module "elasticache" {
   engine_version  = each.value["engine_version"]
   num_cache_nodes = each.value["num_cache_nodes"]
   node_type       = each.value["node_type"]
-
-  subnet_ids = local.db_subnets_ids
+  subnet_ids      = local.db_subnets_ids
 }
 
 #module "rabbitmq" {
@@ -69,7 +65,6 @@ module "elasticache" {
 #
 #  for_each = var.rabbitmq
 #  instance_type = each.value["instance_type"]
-#
 #  subnet_ids = local.db_subnets_ids
 #}
 #
@@ -85,8 +80,7 @@ module "alb" {
   internal           = each.value["internal"]
   load_balancer_type = each.value["load_balancer_type"]
   allow_cidr         = each.value["allow_cidr"]
-
-  subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
+  subnets            = lookup(local.subnet_ids, each.value["subnet_name"], null)
 }
 
 module "app" {
@@ -108,15 +102,14 @@ module "app" {
   listener_priority = each.value["listener_priority"]
   allow_app_to      = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   subnets           = lookup(local.subnet_ids, each.value["subnet_name"], null)
-
-#  alb_dns_name  = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
-  listener_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
+  listener_arn      = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
+  #alb_dns_name      = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
 }
 
 #output "main" {
 #  value = module.vpc
 #}
 
-output "alb" {
-  value = module.alb
-}
+#output "alb" {
+#  value = module.alb
+#}
