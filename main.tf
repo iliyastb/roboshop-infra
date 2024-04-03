@@ -17,6 +17,8 @@ module "docdb" {
   env = var.env
   tags = var.tags
 
+  vpc_id = module.vpc["main"].vpc_id
+
   for_each = var.docdb
   engine = each.value["engine"]
   engine_version = each.value["engine_version"]
@@ -27,6 +29,7 @@ module "docdb" {
   no_of_instances = each.value["no_of_instances"]
 
   subnet_ids = local.db_subnets_ids
+  allow_subnets = lookup(local.subnet_ids, each.value["allow_subnets"], null)
 }
 
 module "rds" {
