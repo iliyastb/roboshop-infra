@@ -189,7 +189,7 @@ apps = {
 #    allow_app_to = "app"
 #    alb = "private"
 #    listener_priority = 15
-  }
+#  }
   frontend = {
     component = "frontend"
     instance_type = "t3.small"
