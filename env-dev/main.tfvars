@@ -1,5 +1,5 @@
 env = "dev"
-bastion_cidr = "172.31.95.149/32"
+bastion_cidr = ["172.31.95.149/32"]
 dns_domain = "devtb.online"
 
 vpc = {
