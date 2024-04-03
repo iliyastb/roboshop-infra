@@ -109,7 +109,7 @@ module "app" {
 #output "main" {
 #  value = module.vpc
 #}
-
-output "alb" {
-  value = module.alb
-}
+#
+#output "alb" {
+#  value = module.alb
+#}
