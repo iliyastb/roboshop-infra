@@ -178,18 +178,6 @@ apps = {
     alb               = "private"
     listener_priority = 14
   }
-  dispatch = {
-    component         = "dispatch"
-    instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 15
-  }
   frontend = {
     component         = "frontend"
     instance_type     = "t3.small"
