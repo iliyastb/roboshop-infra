@@ -139,7 +139,7 @@ apps = {
     subnet_name       = "app"
     port              = 80
     allow_app_to      = "app"
-    alb               = "private"
+    alb               = "public"
     listener_priority = 15
   }
 }
