@@ -128,55 +128,6 @@ apps = {
     port              = 8080
     allow_app_to      = "app"
     alb               = "private"
-    listener_priority = 10
-  }
-  user = {
-    component         = "user"
-    instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 11
-  }
-  cart = {
-    component         = "cart"
-    instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 12
-  }
-  shipping = {
-    component         = "shipping"
-    instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 13
-  }
-  payment = {
-    component         = "payment"
-    instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 14
   }
   frontend = {
     component         = "frontend"
@@ -188,6 +139,5 @@ apps = {
     port              = 80
     allow_app_to      = "public"
     alb               = "public"
-    listener_priority = 10
   }
 }
