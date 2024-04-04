@@ -128,6 +128,18 @@ apps = {
     port              = 80
     allow_app_to      = "public"
     alb               = "public"
+    listener_priority = 10
+  }
+  catalogue = {
+    component         = "catalogue"
+    instance_type     = "t3.small"
+    desired_capacity  = 1
+    max_size          = 4
+    min_size          = 1
+    subnet_name       = "app"
+    port              = 80
+    allow_app_to      = "app"
+    alb               = "private"
     listener_priority = 15
   }
 }
