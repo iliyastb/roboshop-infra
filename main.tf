@@ -91,6 +91,7 @@ module "app" {
   port             = each.value["port"]
   subnets          = lookup(local.subnet_ids, each.value["subnet_name"], null)
   allow_app_to     = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
+  alb = lookup(module.alb, "main", null)
 }
 
 output "alb" {
