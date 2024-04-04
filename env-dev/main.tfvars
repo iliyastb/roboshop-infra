@@ -108,7 +108,7 @@ alb = {
     allow_cidr         = ["0.0.0.0/0"]
   }
 
-  Private = {
+  private = {
     subnet_name        = "app"
     name               = "private"
     internal           = true
@@ -137,9 +137,9 @@ apps = {
     max_size          = 4
     min_size          = 1
     subnet_name       = "app"
-    port              = 80
+    port              = 8080
     allow_app_to      = "app"
-    alb               = "public"
-    listener_priority = 15
+    alb               = "private"
+    listener_priority = 11
   }
 }
