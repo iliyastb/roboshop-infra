@@ -84,7 +84,7 @@ module "alb" {
 }
 
 module "app" {
-  source           = "git::https://github.com/iliyastb/tf-module-app.git"
+  source           = "git::https://github.com/purnavr/tf-module-app.git"
   env              = var.env
   tags             = var.tags
   bastion_cidr     = var.bastion_cidr
