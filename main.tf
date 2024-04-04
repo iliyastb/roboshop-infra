@@ -11,14 +11,6 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 }
 
-output "alb" {
-  value = module.alb
-}
-
-output "vpc" {
-  value = module.vpc
-}
-
 #module "docdb" {
 #  source = "git::https://github.com/iliyastb/tf-module-docdb.git"
 #  env    = var.env
@@ -111,5 +103,13 @@ module "app" {
   allow_app_to      = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   subnets           = lookup(local.subnet_ids, each.value["subnet_name"], null)
   listener_arn      = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
-  alb_dns_name      = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
+#  alb_dns_name      = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
+}
+
+output "alb" {
+  value = module.alb
+}
+
+output "vpc" {
+  value = module.vpc
 }
