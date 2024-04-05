@@ -31,6 +31,7 @@ module "rds" {
   source                  = "git::https://github.com/iliyastb/tf-module-rds.git"
   env                     = var.env
   tags                    = var.tags
+  vpc_id                  = module.vpc["main"].vpc_id
   for_each                = var.rds
   engine                  = each.value["engine"]
   engine_version          = each.value["engine_version"]
@@ -39,6 +40,7 @@ module "rds" {
   instance_class          = each.value["instance_class"]
   no_of_instances         = each.value["no_of_instances"]
   subnet_ids              = local.db_subnets_ids
+  allow_subnets           = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 }
 
 module "elasticache" {
