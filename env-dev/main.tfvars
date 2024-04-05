@@ -129,7 +129,7 @@ apps = {
     allow_app_to      = "public"
     alb               = "public"
     listener_priority = 10
-    parameters = []
+    parameters        = []
   }
   catalogue = {
     component         = "catalogue"
@@ -142,7 +142,7 @@ apps = {
     allow_app_to      = "app"
     alb               = "private"
     listener_priority = 11
-    parameters = ["docdb"]
+    parameters        = ["docdb"]
   }
   user = {
     component         = "user"
@@ -155,7 +155,7 @@ apps = {
     allow_app_to      = "app"
     alb               = "private"
     listener_priority = 12
-    parameters = ["docdb", "elasticache"]
+    parameters        = ["docdb", "elasticache"]
   }
   cart = {
     component         = "cart"
@@ -168,7 +168,7 @@ apps = {
     allow_app_to      = "app"
     alb               = "private"
     listener_priority = 13
-    parameters = ["elasticache"]
+    parameters        = ["elasticache"]
   }
   shipping = {
     component         = "shipping"
@@ -181,7 +181,7 @@ apps = {
     allow_app_to      = "app"
     alb               = "private"
     listener_priority = 14
-    parameters = []
+    parameters        = []
   }
   payment = {
     component         = "payment"
@@ -194,6 +194,6 @@ apps = {
     allow_app_to      = "app"
     alb               = "private"
     listener_priority = 15
-    parameters = []
+    parameters        = []
   }
 }
