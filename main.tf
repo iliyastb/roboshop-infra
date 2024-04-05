@@ -61,9 +61,13 @@ module "rabbitmq" {
   source        = "git::https://github.com/iliyastb/tf-module-rabbitmq.git"
   env           = var.env
   tags          = var.tags
+  bastion_cidr  = var.bastion_cidr
+  dns_domain    = var.dns_domain
+  vpc_id        = module.vpc["main"].vpc_id
   for_each      = var.rabbitmq
   instance_type = each.value["instance_type"]
   subnet_ids    = local.db_subnets_ids
+  allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 }
 
 module "alb" {
@@ -80,7 +84,7 @@ module "alb" {
 }
 
 module "app" {
-  depends_on = [module.docdb, module.rds, module.alb, module.rabbitmq, module.elasticache ]
+  depends_on = [module.docdb, module.rds, module.alb, module.rabbitmq, module.elasticache]
 
   source            = "git::https://github.com/iliyastb/tf-module-app.git"
   env               = var.env
