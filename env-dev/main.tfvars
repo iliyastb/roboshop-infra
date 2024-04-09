@@ -197,6 +197,6 @@ apps = {
     allow_app_to      = "app"
     alb               = "private"
     listener_priority = 15
-    parameters        = []
+    parameters        = ["rabbitmq"]
   }
 }
