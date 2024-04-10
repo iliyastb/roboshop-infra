@@ -13,3 +13,4 @@ variable "dns_domain" {}
 variable "default_vpc_id" {}
 variable "default_rt" {}
 variable "bastion_cidr" {}
+variable "monitoring_nodes" {}
