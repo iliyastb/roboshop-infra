@@ -5,17 +5,17 @@ dns_domain       = "devtb.online"
 
 vpc = {
   main = {
-    vpc_cidr = "10.0.0.0/16"
+    vpc_cidr = "10.225.0.0/16"
 
     public_subnets = {
       public-az1 = {
         name              = "public-az1"
-        cidr_block        = "10.0.0.0/24"
+        cidr_block        = "10.225.0.0/24"
         availability_zone = "us-east-1a"
       }
       public-az2 = {
         name              = "public-az2"
-        cidr_block        = "10.0.1.0/24"
+        cidr_block        = "10.225.1.0/24"
         availability_zone = "us-east-1b"
       }
     }
@@ -23,37 +23,37 @@ vpc = {
     private_subnets = {
       web-az1 = {
         name              = "web-az1"
-        cidr_block        = "10.0.2.0/24"
+        cidr_block        = "10.225.2.0/24"
         availability_zone = "us-east-1a"
         zone              = "az1"
       }
       web-az2 = {
         name              = "web-az2"
-        cidr_block        = "10.0.3.0/24"
+        cidr_block        = "10.225.3.0/24"
         availability_zone = "us-east-1b"
         zone              = "az2"
       }
       app-az1 = {
         name              = "app-az1"
-        cidr_block        = "10.0.4.0/24"
+        cidr_block        = "10.225.4.0/24"
         availability_zone = "us-east-1a"
         zone              = "az1"
       }
       app-az2 = {
         name              = "app-az2"
-        cidr_block        = "10.0.5.0/24"
+        cidr_block        = "10.225.5.0/24"
         availability_zone = "us-east-1b"
         zone              = "az2"
       }
       db-az1 = {
         name              = "db-az1"
-        cidr_block        = "10.0.6.0/24"
+        cidr_block        = "10.225.6.0/24"
         availability_zone = "us-east-1a"
         zone              = "az1"
       }
       db-az2 = {
         name              = "db-az2"
-        cidr_block        = "10.0.7.0/24"
+        cidr_block        = "10.225.7.0/24"
         availability_zone = "us-east-1b"
         zone              = "az2"
       }
@@ -117,7 +117,7 @@ alb = {
     name               = "private"
     internal           = true
     load_balancer_type = "application"
-    allow_cidr         = ["10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24", "10.0.5.0/24"]
+    allow_cidr         = ["10.225.2.0/24", "10.225.3.0/24", "10.225.4.0/24", "10.225.5.0/24"]
   }
 }
 
@@ -125,9 +125,9 @@ apps = {
   frontend = {
     component         = "frontend"
     instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
+    desired_capacity  = 2
+    max_size          = 10
+    min_size          = 2
     subnet_name       = "web"
     port              = 80
     allow_app_to      = "public"
@@ -138,9 +138,9 @@ apps = {
   catalogue = {
     component         = "catalogue"
     instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
+    desired_capacity  = 2
+    max_size          = 10
+    min_size          = 2
     subnet_name       = "app"
     port              = 8080
     allow_app_to      = "app"
@@ -151,9 +151,9 @@ apps = {
   user = {
     component         = "user"
     instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
+    desired_capacity  = 2
+    max_size          = 10
+    min_size          = 2
     subnet_name       = "app"
     port              = 8080
     allow_app_to      = "app"
@@ -164,9 +164,9 @@ apps = {
   cart = {
     component         = "cart"
     instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
+    desired_capacity  = 2
+    max_size          = 10
+    min_size          = 2
     subnet_name       = "app"
     port              = 8080
     allow_app_to      = "app"
@@ -176,10 +176,10 @@ apps = {
   }
   shipping = {
     component         = "shipping"
-    instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
+    instance_type     = "t3.large"
+    desired_capacity  = 2
+    max_size          = 10
+    min_size          = 2
     subnet_name       = "app"
     port              = 8080
     allow_app_to      = "app"
@@ -190,9 +190,9 @@ apps = {
   payment = {
     component         = "payment"
     instance_type     = "t3.small"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
+    desired_capacity  = 2
+    max_size          = 10
+    min_size          = 2
     subnet_name       = "app"
     port              = 8080
     allow_app_to      = "app"
