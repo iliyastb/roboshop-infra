@@ -1,7 +1,7 @@
 env              = "prod"
 bastion_cidr     = ["172.31.85.210/32"]
 monitoring_nodes = ["172.31.24.29/32"]
-dns_domain       = "devtb.online"
+dns_domain       = "devtb.in.net"
 
 vpc = {
   main = {
