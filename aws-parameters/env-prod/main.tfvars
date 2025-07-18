@@ -19,7 +19,13 @@ parameters = [
   { name = "prod.shipping.db_host", value = "mysql-prod.devtb.in.net", type = "String" },
   { name = "prod.user.mongo", value = "true", type = "String" },
   { name = "prod.user.redis_host", value = "redis-prod.devtb.in.net", type = "String" },
-  { name = "prod.user.mongo_url", value = "mongodb://mongodb-prod.devtb.in.net:27017/users", type = "String" }
+  { name = "prod.user.mongo_url", value = "mongodb://mongodb-prod.devtb.in.net:27017/users", type = "String" },
+  { name = "prod.frontend.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.catalogue.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.user.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.cart.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.payment.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.shipping.app_version", value = "1.0.0", type = "String" }
 ]
 
 secrets = [
