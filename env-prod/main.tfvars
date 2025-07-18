@@ -1,6 +1,9 @@
 env              = "prod"
-bastion_cidr     = ["172.31.85.210/32"]
+# this is the worstation private ip, if worstation is newly created then update here
+bastion_cidr     = ["172.31.28.143/32"]
+# this is the elk private ip, if elk stack is newly created then update here
 monitoring_nodes = ["172.31.24.29/32"]
+## this is the domain url, update the new domain if changed
 dns_domain       = "devtb.in.net"
 
 vpc = {
