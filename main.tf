@@ -58,6 +58,8 @@ module "elasticache" {
 }
 
 module "rabbitmq" {
+  depends_on = [module.vpc]
+
   source        = "git::https://github.com/iliyastb/tf-module-rabbitmq.git"
   env           = var.env
   tags          = var.tags
