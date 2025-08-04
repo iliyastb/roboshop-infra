@@ -124,7 +124,7 @@ module "minikube" {
   aws_instance_type   = "t3.medium"
   ssh_public_key      = "~/.ssh/id_rsa.pub"
   aws_subnet_id       = lookup(local.subnet_ids, "public", null)[0]
-  ami_image_id        = "ami-07d68e852b0dbe7e5"
+#  ami_image_id        = "ami-07d68e852b0dbe7e5"
   hosted_zone         = "devtb.in.net"
   hosted_zone_private = false
 
@@ -138,6 +138,7 @@ module "minikube" {
     "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml",
     "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"
   ]
+
 }
 
 output "MINIKUBE_SERVER" {
