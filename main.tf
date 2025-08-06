@@ -113,7 +113,7 @@ module "app" {
 module "eks" {
   source             = "git::https://github.com/iliyastb/tf-module-eks.git"
   env                = var.env
-  eks_version        = 1.27
+  eks_version        = var.eks_version
   private_subnet_ids = local.subnet_ids["app"]
   public_subnet_ids  = local.subnet_ids["public"]
   desired_size       = 2
