@@ -112,12 +112,12 @@ module "app" {
 */
 module "eks" {
   source             = "git::https://github.com/iliyastb/tf-module-eks.git"
-  ENV                = var.env
+  env                = var.env
   eks_version        = 1.27
-  PRIVATE_SUBNET_IDS = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), "app", null), "subnet_ids", null)
-  PUBLIC_SUBNET_IDS  = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), "public", null), "subnet_ids", null)
-  DESIRED_SIZE       = 2
-  MAX_SIZE           = 2
-  MIN_SIZE           = 2
+  private_subnet_ids = local.subnet_ids["app"]
+  public_subnet_ids  = local.subnet_ids["public"]
+  desired_size       = 2
+  max_size           = 2
+  min_size           = 2
   kms_arn            = var.kms_arn
 }
