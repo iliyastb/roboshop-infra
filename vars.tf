@@ -9,6 +9,7 @@ variable "rabbitmq" {}
 variable "alb" {}
 variable "apps" {}
 variable "dns_domain" {}
+variable "kms_arn" {}
 
 variable "default_vpc_id" {}
 variable "default_rt" {}
