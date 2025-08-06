@@ -3,8 +3,10 @@ env              = "prod"
 bastion_cidr     = ["172.31.28.143/32"]
 # this is the elk private ip, if elk stack is newly created then update here
 monitoring_nodes = ["172.31.24.29/32"]
-## this is the domain url, update the new domain if changed
+# this is the domain url, update the new domain if changed
 dns_domain       = "devtb.in.net"
+# kms roboshop
+kms_arn = "arn:aws:kms:us-east-1:860050401100:key/66a389eb-5357-4101-b177-5ccbf9bb8856"
 
 vpc = {
   main = {
