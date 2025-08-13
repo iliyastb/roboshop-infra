@@ -120,3 +120,14 @@ module "eks" {
   min_size           = 2
   kms_arn            = var.kms_arn
 }
+
+#module "eks" {
+#  source             = "github.com/r-devops/tf-module-eks"
+#  ENV                = var.env
+#  PRIVATE_SUBNET_IDS = lookup(local.subnet_ids, "app", null)
+#  PUBLIC_SUBNET_IDS  = lookup(local.subnet_ids, "public", null)
+#  DESIRED_SIZE       = 2
+#  MAX_SIZE           = 2
+#  MIN_SIZE           = 2
+#  versionx           = "1.33"
+#}
