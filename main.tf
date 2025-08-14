@@ -126,7 +126,7 @@ module "eks" {
 resource "null_resource" "update_kubectl_config" {
   depends_on = [module.eks]
 
-  provisioner "remote-exec" {
+  provisioner "local-exec" {
     command = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
   }
 }
