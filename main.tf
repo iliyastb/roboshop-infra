@@ -9,7 +9,7 @@ module "vpc" {
   public_subnets  = each.value["public_subnets"]
   private_subnets = each.value["private_subnets"]
 }
-
+/*
 module "docdb" {
   source                  = "git::https://github.com/iliyastb/tf-module-docdb.git"
   env                     = var.env
@@ -109,7 +109,7 @@ module "app" {
   alb_dns_name      = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
   listener_arn      = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
 }
-*/
+
 module "eks" {
   source             = "git::https://github.com/iliyastb/tf-module-eks.git"
   env                = var.env
@@ -121,12 +121,13 @@ module "eks" {
   kms_arn            = var.kms_arn
 }
 
-#
-## updating the kubectl config
-#resource "null_resource" "update_kubectl_config" {
-#  depends_on = [module.eks]
-#
-#  provisioner "local-exec" {
-#    command = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
-#  }
-#}
+
+# updating the kubectl config
+resource "null_resource" "update_kubectl_config" {
+  depends_on = [module.eks]
+
+  provisioner "local-exec" {
+    command = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
+  }
+}
+*/
