@@ -121,12 +121,12 @@ module "eks" {
   kms_arn            = var.kms_arn
 }
 
-
-# updating the kubectl config
-resource "null_resource" "update_kubectl_config" {
-  depends_on = [module.eks]
-
-  provisioner "local-exec" {
-    command = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
-  }
-}
+#
+## updating the kubectl config
+#resource "null_resource" "update_kubectl_config" {
+#  depends_on = [module.eks]
+#
+#  provisioner "local-exec" {
+#    command = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
+#  }
+#}
