@@ -7,6 +7,8 @@ monitoring_nodes = ["172.31.24.29/32"]
 dns_domain       = "devtb.in.net"
 # kms roboshop
 kms_arn = "arn:aws:kms:us-east-1:860050401100:key/66a389eb-5357-4101-b177-5ccbf9bb8856"
+# region
+region = "us-east-1"
 
 vpc = {
   main = {

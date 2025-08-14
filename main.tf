@@ -121,13 +121,12 @@ module "eks" {
   kms_arn            = var.kms_arn
 }
 
-#module "eks" {
-#  source             = "github.com/r-devops/tf-module-eks"
-#  ENV                = var.env
-#  PRIVATE_SUBNET_IDS = lookup(local.subnet_ids, "app", null)
-#  PUBLIC_SUBNET_IDS  = lookup(local.subnet_ids, "public", null)
-#  DESIRED_SIZE       = 2
-#  MAX_SIZE           = 2
-#  MIN_SIZE           = 2
-#  versionx           = "1.33"
-#}
+
+# updating the kubectl config
+resource "null_resource" "update_kubectl_config" {
+  depends_on = [module.eks]
+
+  provisioner "remote-exec" {
+    command = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
+  }
+}

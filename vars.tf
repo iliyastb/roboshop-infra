@@ -10,6 +10,7 @@ variable "alb" {}
 variable "apps" {}
 variable "dns_domain" {}
 variable "kms_arn" {}
+variable "region" {}
 
 variable "default_vpc_id" {}
 variable "default_rt" {}
