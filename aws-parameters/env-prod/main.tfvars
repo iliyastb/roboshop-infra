@@ -15,7 +15,7 @@ parameters = [
   { name = "prod.payment.user_host", value = "user-prod.devtb.in.net", type = "String" },
   { name = "prod.payment.user_port", value = "80", type = "String" },
   { name = "prod.payment.amqp_host", value = "rabbitmq-prod.devtb.in.net", type = "String" },
-  { name = "prod.shipping.cart_endpoint", value = "cart-prod.devtb.in.net:80", type = "String" },
+  { name = "prod.shipping.cart_endpoint", value = "cart:8080", type = "String" },
   { name = "prod.shipping.db_host", value = "mysql-prod.devtb.in.net", type = "String" },
   { name = "prod.user.mongo", value = "true", type = "String" },
   { name = "prod.user.redis_host", value = "redis-prod.devtb.in.net", type = "String" },
