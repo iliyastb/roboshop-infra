@@ -115,12 +115,11 @@ module "eks" {
   env                = var.env
   private_subnet_ids = lookup(local.subnet_ids, "app", null)
   public_subnet_ids  = lookup(local.subnet_ids, "public", null)
-  desired_size       = 2
-  max_size           = 2
-  min_size           = 2
+  desired_size       = 1
+  max_size           = 1
+  min_size           = 1
   kms_arn            = var.kms_arn
 }
-
 
 # updating the kubectl config
 resource "null_resource" "update_kubectl_config" {
